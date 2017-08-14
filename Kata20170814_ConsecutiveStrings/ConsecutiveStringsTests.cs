@@ -31,6 +31,12 @@ namespace Kata20170814_ConsecutiveStrings
             LongestConsecShouldBe("", new[] { "aa", "b" }, 3);
         }
 
+        [TestMethod]
+        public void input_aa_b_c_and_2_should_return_aab()
+        {
+            LongestConsecShouldBe("aab", new[] { "aa", "b", "c" }, 2);
+        }
+
         private static void LongestConsecShouldBe(string expected, string[] strarr, int count)
         {
             var longest = new LongestConsecutives();
@@ -55,7 +61,20 @@ namespace Kata20170814_ConsecutiveStrings
                 {
                     break;
                 }
-                result = strarr[i].Length > strarr[i + 1].Length ? strarr[i] : strarr[i + 1];
+
+                var str = CompareString(strarr, i, k);
+                result = result.Length > str.Length ? result : str;
+            }
+
+            return result;
+        }
+
+        private static string CompareString(string[] strarr, int idx, int count)
+        {
+            var result = "";
+            for (var j = idx; j < count; j++)
+            {
+                result += strarr[j];
             }
 
             return result;
