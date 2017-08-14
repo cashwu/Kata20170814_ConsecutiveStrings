@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170814_ConsecutiveStrings
 {
@@ -44,6 +42,42 @@ namespace Kata20170814_ConsecutiveStrings
             LongestConsecShouldBe("caa", new[] { "b", "c", "aa" }, 2);
         }
 
+        [TestMethod]
+        public void input_c1_should_return_aab()
+        {
+            LongestConsecShouldBe("abigailtheta", new[] { "zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail" }, 2);
+        }
+
+        [TestMethod]
+        public void input_c2_should_return_aab()
+        {
+            LongestConsecShouldBe("oocccffuucccjjjkkkjyyyeehh", new[] { "ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh" }, 1);
+        }
+
+        [TestMethod]
+        public void input_c3_should_return_aab()
+        {
+            LongestConsecShouldBe("", new string[] {}, 3);
+        }
+
+        [TestMethod]
+        public void input_c4_should_return_aab()
+        {
+            LongestConsecShouldBe("wkppqsztdkmvcuwvereiupccauycnjutlvvweqilsfytihvrzlaodfixoyxvyuyvgpck", new[] { "itvayloxrp", "wkppqsztdkmvcuwvereiupccauycnjutlv", "vweqilsfytihvrzlaodfixoyxvyuyvgpck" }, 2);
+        }
+
+        [TestMethod]
+        public void input_c5_should_return_aab()
+        {
+            LongestConsecShouldBe("", new[] { "zone", "abigail", "theta", "form", "libe", "zas" }, -2);
+        }
+
+        [TestMethod]
+        public void input_c6_should_return_aab()
+        {
+            LongestConsecShouldBe("ixoyx3452zzzzzzzzzzzz", new [] { "it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz" }, 3);
+        }
+
         private static void LongestConsecShouldBe(string expected, string[] strarr, int count)
         {
             var longest = new LongestConsecutives();
@@ -61,7 +95,7 @@ namespace Kata20170814_ConsecutiveStrings
             for (var i = 0; i + count <= strarr.Length; i++)
             {
                 var str = CompareString(strarr, i, count);
-                result = result.Length > str.Length ? result : str;
+                result = result.Length >= str.Length ? result : str;
             }
 
             return result;
