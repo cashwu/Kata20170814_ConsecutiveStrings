@@ -19,6 +19,12 @@ namespace Kata20170814_ConsecutiveStrings
             LongestConsecShouldBe("aa", new[] { "aa", "b" }, 1);
         }
 
+        [TestMethod]
+        public void input_aa_b_and_n1_should_return_empty()
+        {
+            LongestConsecShouldBe("", new[] { "aa", "b" }, -1);
+        }
+
         private static void LongestConsecShouldBe(string expected, string[] strarr, int count)
         {
             var longest = new LongestConsecutives();
@@ -32,7 +38,7 @@ namespace Kata20170814_ConsecutiveStrings
         public string LongestConsec(string[] strarr, int k)
         {
             var result = "";
-            if (k == 0)
+            if (k <= 0)
             {
                 return result;
             }
