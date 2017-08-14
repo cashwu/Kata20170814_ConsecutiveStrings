@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Kata20170814_ConsecutiveStrings
 {
     [TestClass]
-    public class UnitTest1
+    public class ConsecutiveStringsTests
     {
         [TestMethod]
         public void TestMethod1()
