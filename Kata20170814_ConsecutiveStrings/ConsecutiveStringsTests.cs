@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170814_ConsecutiveStrings
@@ -10,6 +11,12 @@ namespace Kata20170814_ConsecutiveStrings
         public void input_a_b_and_0_should_return_empty()
         {
             LongestConsecShouldBe("", new[] { "a", "b" }, 0);
+        }
+
+        [TestMethod]
+        public void input_aa_b_and_1_should_return_aa()
+        {
+            LongestConsecShouldBe("aa", new[] { "aa", "b" }, 1);
         }
 
         private static void LongestConsecShouldBe(string expected, string[] strarr, int count)
@@ -24,7 +31,22 @@ namespace Kata20170814_ConsecutiveStrings
     {
         public string LongestConsec(string[] strarr, int k)
         {
-            return "";
+            var result = "";
+            if (k == 0)
+            {
+                return result;
+            }
+
+            for (int i = 0; i < strarr.Length; i++)
+            {
+                if (i + 1 >= strarr.Length)
+                {
+                    break;
+                }
+                result = strarr[i].Length > strarr[i + 1].Length ? strarr[i] : strarr[i + 1];
+            }
+
+            return result;
         }
     }
 }
