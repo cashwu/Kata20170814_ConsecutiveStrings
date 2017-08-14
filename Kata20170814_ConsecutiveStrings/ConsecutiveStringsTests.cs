@@ -47,22 +47,17 @@ namespace Kata20170814_ConsecutiveStrings
 
     public class LongestConsecutives
     {
-        public string LongestConsec(string[] strarr, int k)
+        public string LongestConsec(string[] strarr, int count)
         {
             var result = "";
-            if (k <= 0 || strarr.Length < k)
+            if (count <= 0 || strarr.Length < count)
             {
                 return result;
             }
 
-            for (int i = 0; i < strarr.Length; i++)
+            for (var i = 0; i < strarr.Length; i++)
             {
-                if (i + 1 >= strarr.Length)
-                {
-                    break;
-                }
-
-                var str = CompareString(strarr, i, k);
+                var str = CompareString(strarr, i, count);
                 result = result.Length > str.Length ? result : str;
             }
 
